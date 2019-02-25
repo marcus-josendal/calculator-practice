@@ -4,7 +4,6 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.SpannableStringBuilder
-import android.util.Log
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -59,7 +58,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnAdd.setOnClickListener {
-           if(engine.checkOperators(input)) {
+           if(engine.checkOperators(input.toString())) {
                Toast.makeText(this, "Only use one operator", Toast.LENGTH_SHORT).show()
            } else {
                input.append(btnAdd.text)
@@ -67,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnMinus.setOnClickListener {
-            if(engine.checkOperators(input)) {
+            if(engine.checkOperators(input.toString())) {
                 Toast.makeText(this, "Only use one operator", Toast.LENGTH_SHORT).show()
             } else {
                 input.append(btnMinus.text)
@@ -75,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnDivide.setOnClickListener {
-            if(engine.checkOperators(input)) {
+            if(engine.checkOperators(input.toString())) {
                 Toast.makeText(this, "Only use one operator", Toast.LENGTH_SHORT).show()
             } else {
                 input.append(btnDivide.text)
@@ -83,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnMultiply.setOnClickListener {
-            if(engine.checkOperators(input)) {
+            if(engine.checkOperators(input.toString())) {
                 Toast.makeText(this, "Only use one operator", Toast.LENGTH_SHORT).show()
             } else {
                 input.append(btnMultiply.text)
@@ -95,9 +94,9 @@ class MainActivity : AppCompatActivity() {
         }
 
         btnEquals.setOnClickListener {
-            if(input.toString() != "" && engine.validMath(input)) {
-                val edit: Editable = SpannableStringBuilder(engine.calculateResult(input))
-                inputField.text = edit
+            if(input.toString() != "" && engine.validMath(input.toString())) {
+                val edit = engine.calculateResult(input.toString())
+                inputField.text = SpannableStringBuilder(edit)
 
             } else {
                 Toast.makeText(this, "Type something valid!", Toast.LENGTH_SHORT).show()

@@ -1,13 +1,9 @@
 package com.sc.marcus.calculator
 
-import android.app.Instrumentation
-import android.content.Context
 import android.text.Editable
 import org.junit.Test
 
 import org.junit.Assert.*
-import org.junit.Before
-import org.junit.runner.RunWith
 
 
 /**
